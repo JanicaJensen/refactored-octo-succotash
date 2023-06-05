@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bye Bye Fresh</title>
+    <link rel="stylesheet" type="text/css" href="/css/jass.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="parent">
+
+        <div class="div1">
+            <a href="/"><img src="/images/small-logo.png"></a>
+
+        </div>
+
+        <div class="div2">
+            <nav>
+                <!-- Conditionally render login or logout links -->
+                {{#if logged_in}}
+                <a href="/homepage">home</a> |
+                <button class="no-button" id="logout">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        {{{body}}}
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+</body>
+
+</html>
