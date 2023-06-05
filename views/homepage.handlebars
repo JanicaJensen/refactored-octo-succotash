@@ -1,77 +1,8 @@
 <div class="appcontainer">
-
-    <div class="appdiv1">
-
-        <h3>Choose your recipes!</h3>
-
-    </div>
-
+    {{#if logged_in}}
+    {{> recipelist}}
     
-    {{!-- <div class="appdiv2">
 
-        <div class="cuisine">
-            <ul class="cuisine" id="cuisine-list">
-                <li><a href="#" data-cuisine="All">All</a></li>
-                <li><a href="#" data-cuisine="American">Asian</a></li>
-                <li><a href="#" data-cuisine="Asian">Asian</a></li>
-                <li><a href="#" data-cuisine="Italian">Italian</a></li>
-                <li><a href="#" data-cuisine="Mexican">Mexican</a></li>
-                <li><a href="#" data-cuisine="Mediterranean">Mediterranean</a></li>
-                <li><a href="#" data-cuisine="European">European</a></li>
-                <li><a href="#" data-cuisine="Latin">Latin</a></li>
-            </ul>
-        </div>
-        <div class="recipecard" id="recipes-container">
-            <ul>${recipeList}</ul>
-        </div>
-    </div>
-
-
-
-
-
-    <div class="appdiv3">
-
-        <h3>Your lists:</h3>
-
-    </div>
-
-
-
-    <div class="appdiv4">
-
-         <div class="recipelist">
-            <div>
-                <h3>the most common</h3>
-                <ul>
-                    <li>ingredient</li>
-                    <li>ingredient</li>
-                    <li>ingredient</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul>
-                    <h3>2 or more</h3>
-                    <li>ingredient</li>
-                    <li>ingredient</li>
-                    <li>ingredient</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul>
-                    <h3>least common</h3>
-                    <li>ingredient</li>
-                    <li>ingredient</li>
-                    <li>ingredient</li>
-                </ul>
-            </div>
-
-        </div> 
-
-    </div> 
-    --}}
 
 
 
@@ -86,8 +17,8 @@
 
 
 
-
-
+    {{else}}
+    {{/if}}
     <div class="appdiv7 footer">
 
         <footer> footer info</footer>

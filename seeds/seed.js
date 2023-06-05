@@ -32,7 +32,7 @@ const path = require('path');
         for (const recipeData of recipes) {
             const { recipe, ingredients, cuisine } = recipeData;
             // Create a named recipe
-            const [createdRecipe] = await Recipes.create({ name: recipe });
+            const createdRecipe = await Recipes.create({ name: recipe });
 
             
 
