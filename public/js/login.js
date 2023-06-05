@@ -18,6 +18,7 @@ const loginFormHandler = async (event) => {
         document.location.replace('/profile');
       } else {
         alert(response.statusText);
+        alert("1");
       }
     }
   };
@@ -40,6 +41,7 @@ const loginFormHandler = async (event) => {
         document.location.replace('/profile');
       } else {
         alert(response.statusText);
+        console.log(response);
       }
     }
   };

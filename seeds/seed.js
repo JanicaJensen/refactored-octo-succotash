@@ -2,10 +2,14 @@
 const sequelize = require('../config/connection');
 
 // imports the recipe model
-const Recipe = require('../models/Recipe');
+const Recipes = require('../models/Recipes');
 
 // imports the ingredient model
-const Ingredient = require('../models/Ingredient');
+const Ingredient = require('../models/Ingredients');
+
+// imports the CuisineCategory model
+const CuisineCategory = require('../models/CuisineCategory');
+
 
 // allows it to read the JSON file in seeds
 const fs = require('fs');
@@ -23,24 +27,33 @@ const path = require('path');
         const seedData = fs.readFileSync(path.join(__dirname, 'recipes-seeds.json'), 'utf8');
         // parses the JSON file into a constant called recipes
         const recipes = JSON.parse(seedData);
-
+        
         // Iterate over each recipe in the recipes constant
         for (const recipeData of recipes) {
             const { recipe, ingredients, cuisine } = recipeData;
             // Create a named recipe
-            const createdRecipe = await Recipe.create({ name: recipe });
+            const [createdRecipe] = await Recipes.create({ name: recipe });
 
-            // Insert cuisine data into CuisineCategory table
-            await sequelize.query(
-                `
-        INSERT INTO CuisineCategory (name, cuisine)
-        VALUES (?, ?);
-        `,
-                {
-                    replacements: [recipe, cuisine],
-                    type: sequelize.QueryTypes.INSERT,
-                }
-            );
+            
+
+
+
+            //     // Insert cuisine data into CuisineCategory table
+            //     await sequelize.query(
+            //         `
+            // INSERT INTO CuisineCategory (name, cuisine)
+            // VALUES (?, ?);
+            // `,
+            //         {
+            //             replacements: [recipe, cuisine],
+            //             type: sequelize.QueryTypes.INSERT,
+            //         }
+            //     );
+            let [cat] = await CuisineCategory.findOrCreate({
+                where: {name: cuisine}
+            });
+
+
 
             // Iterate over each ingredient in the ingredients constant
             for (const ingredient of ingredients) {

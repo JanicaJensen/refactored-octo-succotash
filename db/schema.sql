@@ -5,15 +5,15 @@ CREATE DATABASE byebyefresh_db;
 -- Uses the byebyefresh_db database
 USE byebyefresh_db;
 
--- Creates the Recipe table
-CREATE TABLE Recipe (
+-- Creates the Recipes table
+CREATE TABLE Recipes (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   cuisine VARCHAR(255) NOT NULL
 );
 
--- Creates the Ingredient table
-CREATE TABLE Ingredient (
+-- Creates the Ingredients table
+CREATE TABLE Ingredients (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL
 );
@@ -23,8 +23,8 @@ CREATE TABLE RecipeIngredient (
   id INT PRIMARY KEY AUTO_INCREMENT,
   recipeId INT NOT NULL,
   ingredientId INT NOT NULL,
-  FOREIGN KEY (recipeId) REFERENCES Recipe(id),
-  FOREIGN KEY (ingredientId) REFERENCES Ingredient(id)
+  FOREIGN KEY (recipeId) REFERENCES Recipes(id),
+  FOREIGN KEY (ingredientId) REFERENCES Ingredients(id)
 );
 
 CREATE TABLE CuisineCategory (
