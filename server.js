@@ -9,6 +9,11 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
+///DOESN'T WORK!!!!///
+// not sure about this const and app below
+//const recipesRouter = require('./controllers/api/recipeRoutes');
+
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
@@ -28,7 +33,7 @@ const sess = {
 };
 
 app.use(session(sess));
-
+hbs.partialsDir = (path.join(__dirname, "views","layouts","partials"));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -38,10 +43,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-///DOESN'T WORK!!!!///
-// not sure about this const and app below
-const recipesRouter = require('./controllers/api/recipeRoutes');
-app.use('/api/recipeRoutes', recipesRouter);
 // End of doesn't work
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
