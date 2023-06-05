@@ -1,5 +1,3 @@
-/// DOESN'T WORK!!!!///
-
 // controllers/api/recipes.js
 const router = require('express').Router();
 const express = require('express');
@@ -9,26 +7,30 @@ const CuisineCategory = require('../../models/CuisineCategory');
 
 
 // Route to handle /api/recipes/:cuisineType
-router.get('/:CuisineCategory', async (req, res) => {
+router.get('/:RequestCategory', async (req, res) => {
+ 
+  let reqCat = req.params.RequestCategory;
+  if (reqCat == "All")
+  {
+    // Get all recipies
+  }
   try {
-    const foundCategory = await CuisineCategory.findAll({
+    const [foundCategory] = await CuisineCategory.findAll({
       where: {
         name: {
-          [Op.eq]: req.params.CuisineCategory, // exact match
+          [Op.eq]: reqCat, // exact match
         }
       }
     });
 
-    // Query the database to retrieve recipes based on the cuisineType
-    const recipes = await Recipes.findAll({
+       const recipes = await Recipes.findAll({
       where: {
         cuisineCategoryId: {
           [Op.eq]: foundCategory.id, //column in the recipe table
         },
       },
     });
-    console.log("recipes: " + recipes);
-    // Send the retrieved recipes as the response
+  
     res.json({ recipes });
   } catch (error) {
     console.error(error);
