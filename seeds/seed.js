@@ -9,11 +9,8 @@ const Ingredient = require('../models/Ingredients');
 
 // imports the CuisineCategory model
 const CuisineCategory = require('../models/CuisineCategory');
-
-
 // allows it to read the JSON file in seeds
 const fs = require('fs');
-
 // I honestly don't understand this but it is in all our activities
 // so I am including it.
 const path = require('path');
@@ -22,21 +19,14 @@ const path = require('path');
     try {
         // Sync models to the database and drop existing tables (force: true)
         await sequelize.sync({ force: true });
-
         // creates a constant called seedData which reads the recipes-seeds.json file   
         const seedData = fs.readFileSync(path.join(__dirname, 'recipes-seeds.json'), 'utf8');
         // parses the JSON file into a constant called recipes
         const recipes = JSON.parse(seedData);
-        
         // Iterate over each recipe in the recipes constant
         for (const recipeData of recipes) {
             const { recipe, ingredients, cuisine } = recipeData;
             // Create a named recipe
-            const [createdRecipe] = await Recipes.create({ name: recipe });
-
-            
-
-
 
             //     // Insert cuisine data into CuisineCategory table
             //     await sequelize.query(
@@ -50,11 +40,9 @@ const path = require('path');
             //         }
             //     );
             let [cat] = await CuisineCategory.findOrCreate({
-                where: {name: cuisine}
+                where: { name: cuisine }
             });
-
-
-
+            const createdRecipe = await Recipes.create({ name: recipe, cuisineCategoryId: cat.id });
             // Iterate over each ingredient in the ingredients constant
             for (const ingredient of ingredients) {
                 // Create a named ingredient

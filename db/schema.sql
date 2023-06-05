@@ -27,11 +27,7 @@ CREATE TABLE RecipeIngredient (
   FOREIGN KEY (ingredientId) REFERENCES Ingredients(id)
 );
 
-CREATE TABLE CuisineCategory (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL,
-  cuisine VARCHAR(255) NOT NULL
-);
+
 
 
 -- I believe we need this to handle the user info?
