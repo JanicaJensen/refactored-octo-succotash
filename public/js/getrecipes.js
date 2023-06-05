@@ -26,5 +26,3 @@ cuisineList.addEventListener('click', (event) => {
             console.error(error);
         });
 });
-
-module.exports = router;
