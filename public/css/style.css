@@ -179,3 +179,7 @@ body {
 .footer {
   text-align: center;
 }
+
+.clickable-text {
+  cursor: pointer;
+}
