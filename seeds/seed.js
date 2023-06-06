@@ -26,19 +26,7 @@ const path = require('path');
         // Iterate over each recipe in the recipes constant
         for (const recipeData of recipes) {
             const { recipe, ingredients, cuisine } = recipeData;
-            // Create a named recipe
 
-            //     // Insert cuisine data into CuisineCategory table
-            //     await sequelize.query(
-            //         `
-            // INSERT INTO CuisineCategory (name, cuisine)
-            // VALUES (?, ?);
-            // `,
-            //         {
-            //             replacements: [recipe, cuisine],
-            //             type: sequelize.QueryTypes.INSERT,
-            //         }
-            //     );
             let [cat] = await CuisineCategory.findOrCreate({
                 where: { name: cuisine }
             });
