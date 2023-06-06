@@ -10,11 +10,14 @@ const CuisineCategory = require('../../models/CuisineCategory');
 router.get('/:RequestCategory', async (req, res) => {
  
   let reqCat = req.params.RequestCategory;
-  if (reqCat == "All")
-  {
-    // Get all recipies
-  }
+
   try {
+    if (reqCat == "All")
+    {
+      // Get all recipies
+      
+    }
+    else{
     const [foundCategory] = await CuisineCategory.findAll({
       where: {
         name: {
@@ -22,6 +25,10 @@ router.get('/:RequestCategory', async (req, res) => {
         }
       }
     });
+    if( !foundCategory )
+    {
+      throw("We found no matching Categories!!");
+    }
 
        const recipes = await Recipes.findAll({
       where: {
@@ -30,8 +37,10 @@ router.get('/:RequestCategory', async (req, res) => {
         },
       },
     });
-  
     res.json({ recipes });
+  }
+  
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({
