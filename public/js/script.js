@@ -21,6 +21,12 @@ fetch(requestUrl)
       return response.json();
     }).then(function (data) {
       console.log(data);
+      console.log(data.hints[0].food.nutrients.ENERC_KCAL);
+      document.querySelector("#calories").textContent = `calories:${data.hints[0].food.nutrients.ENERC_KCAL}`;
+      console.log(data.hints[0].food.nutrients.CHOCDF);
+      document.querySelector("#carbs").textContent = `carbs:${data.hints[0].food.nutrients.CHOCDF}`;
+      console.log(data.hints[0].food.nutrients.PROCNT);
+      document.querySelector("#protein").textContent = `protein:${data.hints[0].food.nutrients.PROCNT}`;
       responseData.push(data);
     });
   }
