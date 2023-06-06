@@ -1,7 +1,11 @@
 var app_id = "561e2cf2";
 
 var app_key = "f15fdebb7fd1deccbf454477774e4461";
-var food = "milk";  
+var foods = ["milk", "bread", "eggs"]; 
+var responseData = []; // Array to store the responses from the API
+
+for (var i = 0; i < foods.length; i++) {
+  var food = foods[i];
 var requestUrl = `https://api.edamam.com/api/food-database/v2/parser?app_id=${app_id}&app_key=${app_key}&ingr=${food}&nutrition-type=cooking
 `;
 
@@ -17,4 +21,8 @@ fetch(requestUrl)
       return response.json();
     }).then(function (data) {
       console.log(data);
-    })
+      responseData.push(data);
+    });
+  }
+  // Access the stored responses outside the loop
+console.log(responseData);
