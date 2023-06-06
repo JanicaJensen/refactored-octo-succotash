@@ -18,9 +18,9 @@ for(let i  = 0; i < cuisineTypes.length; i++)
                 // Process the response and update the UI
                 const recipes = data.recipes;
                 const recipeList = recipes
-                    .map((recipe) => `<li>${recipe.name}</li>`)
+                .map((recipe) => `<li><a class="clickable-text" id="recipe-li">${recipe.name}</a></li>`)
                     .join('');
-    
+    ``
                 recipesContainer.innerHTML = `<ul>${recipeList}</ul>`;
             })
             .catch((error) => {
