@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 // bringing in sequelize connection 
 const sequelize = require('../config/connection');
-const Recipes = require('./Recipes');
 
 const CuisineCategory = sequelize.define('CuisineCategory', {
   id: {
