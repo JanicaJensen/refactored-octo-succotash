@@ -12,11 +12,11 @@ var requestUrl = `https://api.edamam.com/api/food-database/v2/parser?app_id=${ap
 // store the response from the database in an array 
 
 // put this in a for loop to get all the items in the array
-fetch(requestUrl)
+ return fetch(requestUrl)
     .then(function (response) {
       console.log(response);
       if (response.status === 200) {
-        console.log("slay");
+        console.log("API CALL SUCCESSFUL");
       }
       return response.json();
     }).then(function (data) {
@@ -32,3 +32,4 @@ fetch(requestUrl)
   }
   // Access the stored responses outside the loop
 console.log(responseData);
+
