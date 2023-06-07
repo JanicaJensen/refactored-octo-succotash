@@ -3,6 +3,6 @@ const sequelize = require('../config/connection');
 
 class RecipeIngredient extends Model { }
 
-RecipeIngredient.init({}, { sequelize, modelName: 'recipeIngredient' });
+RecipeIngredient.init({}, { sequelize, modelName: 'RecipeIngredient' });
 
 module.exports = RecipeIngredient;

@@ -183,3 +183,25 @@ body {
 .clickable-text {
   cursor: pointer;
 }
+
+.Footer
+{
+  display: flex;
+  padding: 1rem;
+  border-top: 1px solid #dcdcdc;
+  justify-content: space-between;
+
+  .footer-links {
+    display: flex;
+    flex-direction: row;
+  }
+  .footer-link
+  {
+    text-decoration: underline;
+    margin: 0 1rem;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
